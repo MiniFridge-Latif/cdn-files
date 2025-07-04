@@ -632,6 +632,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         // After getting current version, check for updates.
                         api.checkServerForUpdate();
                     }
+                    if (key === 'aU') {
+                        const el = DOMElements.settingsForm.querySelector(`[name="${key}"]`);
+                        if (el) el.checked = settings[key]; // Use .checked for checkboxes
+                    }
                 }
             },
             
@@ -1068,7 +1072,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     const formData = new FormData(e.target);
                     const settings = {};
-                    formData.forEach((value, key) => { settings[key] = parseFloat(value); });
+                    formData.forEach((value, key) => { 
+                        if (key !== 'aU') {
+                            settings[key] = parseFloat(value);
+                        }
+                    });
+                    // Manually add the checkbox state (it won't be in formData if unchecked)
+                    const autoUpdateSwitch = e.target.querySelector('[name="aU"]');
+                    settings['aU'] = autoUpdateSwitch.checked; // This will be true or false
+
+                    console.log("Saving settings:", settings); // For debugging
+                    
                     ui.showToast('Saving settings...', 'info');
                     await api.post('/settings', settings);
                 });
@@ -1189,3 +1203,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         controller.init();
     });
+
