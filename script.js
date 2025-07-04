@@ -193,23 +193,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             <hr class="my-4">
                             
                             <h5 class="mb-3"><i class="fas fa-file-signature me-2"></i>General & Logging</h5>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Log Temp Delta</label>
-                                    <div class="input-group">
-                                        <input type="number" step="0.1" class="form-control" name="tDL">
-                                        <span class="input-group-text">Δ°C</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Sensor Interval</label>
-                                    <div class="input-group">
-                                        <input type="number" step="100" class="form-control" name="sI">
-                                        <span class="input-group-text">ms</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
+<div class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Log Temp Delta</label>
+        <div class="input-group">
+            <input type="number" step="0.1" class="form-control" name="tDL">
+            <span class="input-group-text">Δ°C</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Sensor Interval</label>
+        <div class="input-group">
+            <input type="number" step="100" class="form-control" name="sI">
+            <span class="input-group-text">ms</span>
+        </div>
+    </div>
+    <!-- NEW AUTO-UPDATE SWITCH -->
+    <div class="col-md-6 mt-4">
+        <div class="form-check form-switch form-check-lg">
+            <input class="form-check-input" type="checkbox" role="switch" id="autoUpdateSwitch" name="aU">
+            <label class="form-check-label" for="autoUpdateSwitch">Auto-Update on Startup</label>
+        </div>
+    </div>
+</div>
+                                                            
                             <div class="d-flex gap-2 mt-4">
                                 <button type="submit" class="btn btn-success flex-grow-1">
                                     <i class="fas fa-save me-2"></i>Save Settings
